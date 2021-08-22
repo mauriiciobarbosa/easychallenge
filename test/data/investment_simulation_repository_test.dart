@@ -54,17 +54,18 @@ void main() {
       annualNetRateProfit: 74.17,
     );
     final expectedResult = InvestmentSimulationResult(
-      grossAmount: 'R\$ 60.528,20',
-      netAmountProfit: 'R\$ 23.974,42',
-      investedAmount: 'R\$ 1.000,00',
-      grossAmountProfit: 'R\$ 28.205,20',
-      incomeTax: 'R\$ 4.230,78 [15,00%]',
-      maturityDate: '21/03/2023',
+      grossAmount: 60528.20,
+      netAmountProfit: 23974.42,
+      investedAmount: 1000,
+      grossAmountProfit: 28205.20,
+      taxesAmount: 4230.78,
+      taxesRate: 0.15,
+      maturityDate: '2023-03-21T00:00:00',
       period: '1981',
-      monthlyGrossRateProfit: '0,76%',
-      rate: '123,00%',
-      annualGrossRateProfit: '87,26%',
-      rateProfit: '9,55%',
+      monthlyGrossRateProfit: 0.0076,
+      rate: 1.23,
+      annualGrossRateProfit: 0.8726,
+      rateProfit: 0.095512,
     );
 
     when(client.get(any)).thenAnswer(

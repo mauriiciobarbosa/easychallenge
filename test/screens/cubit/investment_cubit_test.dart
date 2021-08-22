@@ -4,6 +4,7 @@ import 'package:easynvest_app/domain/investment_simulation_result.dart';
 import 'package:easynvest_app/screens/cubit/investment_cubit.dart';
 import 'package:easynvest_app/screens/cubit/investment_cubit_state.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
@@ -19,6 +20,7 @@ void main() {
   ).toDomain();
 
   setUp(() {
+    initializeDateFormatting('pt_BR');
     repository = MockInvestmentSimulationRepository();
   });
 
@@ -38,7 +40,6 @@ void main() {
       ],
     );
 
-    // fazer teste do cubit
     blocTest<InvestmentCubit, InvestmentCubitState>(
       'when value is changed on other state than InitialState',
       build: () => InvestmentCubit(repository: repository),

@@ -6,7 +6,8 @@ class InvestmentSimulationResult extends Equatable {
     required this.netAmountProfit,
     required this.investedAmount,
     required this.grossAmountProfit,
-    required this.incomeTax,
+    required this.taxesAmount,
+    required this.taxesRate,
     required this.maturityDate,
     required this.period,
     required this.monthlyGrossRateProfit,
@@ -15,17 +16,18 @@ class InvestmentSimulationResult extends Equatable {
     required this.rateProfit,
   });
 
-  final String grossAmount;
-  final String netAmountProfit;
-  final String investedAmount;
-  final String grossAmountProfit;
-  final String incomeTax;
+  final double grossAmount;
+  final double netAmountProfit;
+  final int investedAmount;
+  final double grossAmountProfit;
+  final double taxesAmount;
+  final double taxesRate;
   final String maturityDate;
   final String period;
-  final String monthlyGrossRateProfit;
-  final String rate;
-  final String annualGrossRateProfit;
-  final String rateProfit;
+  final double monthlyGrossRateProfit;
+  final double rate;
+  final double annualGrossRateProfit;
+  final double rateProfit;
 
   @override
   List<Object?> get props => [
@@ -33,7 +35,8 @@ class InvestmentSimulationResult extends Equatable {
         netAmountProfit,
         investedAmount,
         grossAmountProfit,
-        incomeTax,
+        taxesAmount,
+        taxesRate,
         maturityDate,
         period,
         monthlyGrossRateProfit,

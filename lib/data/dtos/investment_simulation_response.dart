@@ -1,6 +1,4 @@
 import 'package:easynvest_app/domain/investment_simulation_result.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'investment_simulation_response.g.dart';
@@ -44,33 +42,19 @@ class InvestmentSimulationResponse {
   }
 
   InvestmentSimulationResult toDomain() {
-    initializeDateFormatting('pt_BR');
-
-    final moneyFormatter =
-        NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$');
-    final percentFormatter =
-        NumberFormat.decimalPercentPattern(locale: 'pt_BR', decimalDigits: 2);
-    final dateFormatter = DateFormat('dd/MM/yyyy', 'pt_BR');
-
     return InvestmentSimulationResult(
-      grossAmount: moneyFormatter.format(this.grossAmount),
-      netAmountProfit: moneyFormatter.format(this.netAmountProfit),
-      investedAmount:
-          moneyFormatter.format(this.investmentParameter.investedAmount),
-      grossAmountProfit: moneyFormatter.format(this.grossAmountProfit),
-      incomeTax: '${moneyFormatter.format(this.taxesAmount)} '
-          '[${percentFormatter.format(this.taxesRate / 100)}]',
-      maturityDate: dateFormatter.format(
-        DateTime.parse(this.investmentParameter.maturityDate),
-      ),
+      grossAmount: this.grossAmount,
+      netAmountProfit: this.netAmountProfit,
+      investedAmount: this.investmentParameter.investedAmount,
+      grossAmountProfit: this.grossAmountProfit,
+      taxesAmount: this.taxesAmount,
+      taxesRate: this.taxesRate / 100,
+      maturityDate: this.investmentParameter.maturityDate,
       period: this.investmentParameter.maturityTotalDays.toString(),
-      monthlyGrossRateProfit:
-          percentFormatter.format(this.monthlyGrossRateProfit / 100),
-      rate: percentFormatter.format(this.investmentParameter.rate / 100),
-      annualGrossRateProfit: percentFormatter.format(
-        this.annualGrossRateProfit / 100,
-      ),
-      rateProfit: percentFormatter.format(this.rateProfit / 100),
+      monthlyGrossRateProfit: this.monthlyGrossRateProfit / 100,
+      rate: this.investmentParameter.rate / 100,
+      annualGrossRateProfit: this.annualGrossRateProfit / 100,
+      rateProfit: this.rateProfit / 100,
     );
   }
 }

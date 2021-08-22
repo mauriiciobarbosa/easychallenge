@@ -15,18 +15,30 @@ import '../cubit/investment_cubit_test.mocks.dart';
 void main() {
   late MockInvestmentSimulationRepository repository;
   final InvestmentSimulationResult result = InvestmentSimulationResult(
-    grossAmount: 'R\$ 60.528,20',
-    netAmountProfit: 'R\$ 23.974,42',
-    investedAmount: 'R\$ 1.000,00',
-    grossAmountProfit: 'R\$ 28.205,20',
-    incomeTax: 'R\$ 4.230,78 [15,00%]',
-    maturityDate: '21/03/2023',
+    grossAmount: 60528.20,
+    netAmountProfit: 23974.42,
+    investedAmount: 1000,
+    grossAmountProfit: 28205.20,
+    taxesAmount: 4230.78,
+    taxesRate: 0.15,
+    maturityDate: '2023-03-21T00:00:00',
     period: '1981',
-    monthlyGrossRateProfit: '0,76%',
-    rate: '123,00%',
-    annualGrossRateProfit: '87,26%',
-    rateProfit: '9,55%',
+    monthlyGrossRateProfit: 0.0076,
+    rate: 1.23,
+    annualGrossRateProfit: 0.8726,
+    rateProfit: 0.095512,
   );
+  final String grossAmount = 'R\$ 60.528,20';
+  final String netAmountProfit = 'R\$ 23.974,42';
+  final String investedAmount = 'R\$ 1.000,00';
+  final String grossAmountProfit = 'R\$ 28.205,20';
+  final String incomeTax = 'R\$ 4.230,78 [15,00%]';
+  final String maturityDate = '21/03/2023';
+  final String period = '1981';
+  final String monthlyGrossRateProfit = '0,76%';
+  final String rate = '123,00%';
+  final String annualGrossRateProfit = '87,26%';
+  final String rateProfit = '9,55%';
 
   late InvestmentCubit cubit;
 
@@ -62,7 +74,7 @@ void main() {
 
     final header = find.byWidgetPredicate(
       (widget) => findHeaderWithGrossAmountAndNetAmountProfit(
-          widget, result.grossAmount, result.netAmountProfit),
+          widget, grossAmount, netAmountProfit),
     );
     expect(header, findsOneWidget);
 
@@ -71,7 +83,7 @@ void main() {
         (widget) => findRowWithTitleAndDescription(
           widget,
           'Valor aplicado inicialmente',
-          result.investedAmount,
+          investedAmount,
         ),
       ),
       findsOneWidget,
@@ -82,7 +94,7 @@ void main() {
         (widget) => findRowWithTitleAndDescription(
           widget,
           'Valor bruto do investimento',
-          result.grossAmount,
+          grossAmount,
         ),
       ),
       findsOneWidget,
@@ -93,7 +105,7 @@ void main() {
         (widget) => findRowWithTitleAndDescription(
           widget,
           'Valor do rendimento',
-          result.grossAmountProfit,
+          grossAmountProfit,
         ),
       ),
       findsOneWidget,
@@ -104,7 +116,7 @@ void main() {
         (widget) => findRowWithTitleAndDescription(
           widget,
           'IR sobre o investimento',
-          result.incomeTax,
+          incomeTax,
         ),
       ),
       findsOneWidget,
@@ -115,7 +127,7 @@ void main() {
         (widget) => findRowWithTitleAndDescription(
           widget,
           'Valor líquido do investimento',
-          result.netAmountProfit,
+          netAmountProfit,
         ),
       ),
       findsOneWidget,
@@ -126,7 +138,7 @@ void main() {
         (widget) => findRowWithTitleAndDescription(
           widget,
           'Data de resgate',
-          result.maturityDate,
+          maturityDate,
         ),
       ),
       findsOneWidget,
@@ -137,7 +149,7 @@ void main() {
         (widget) => findRowWithTitleAndDescription(
           widget,
           'Dias corridos',
-          result.period,
+          period,
         ),
       ),
       findsOneWidget,
@@ -148,7 +160,7 @@ void main() {
         (widget) => findRowWithTitleAndDescription(
           widget,
           'Rendimento mensal',
-          result.monthlyGrossRateProfit,
+          monthlyGrossRateProfit,
         ),
       ),
       findsOneWidget,
@@ -159,7 +171,7 @@ void main() {
         (widget) => findRowWithTitleAndDescription(
           widget,
           'Percentual do CDI do investimento',
-          result.rate,
+          rate,
         ),
       ),
       findsOneWidget,
@@ -170,7 +182,7 @@ void main() {
         (widget) => findRowWithTitleAndDescription(
           widget,
           'Rentabilidade anual',
-          result.annualGrossRateProfit,
+          annualGrossRateProfit,
         ),
       ),
       findsOneWidget,
@@ -181,7 +193,7 @@ void main() {
         (widget) => findRowWithTitleAndDescription(
           widget,
           'Rentabilidade no período',
-          result.rateProfit,
+          rateProfit,
         ),
       ),
       findsOneWidget,
