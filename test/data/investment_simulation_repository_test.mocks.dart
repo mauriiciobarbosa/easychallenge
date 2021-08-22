@@ -121,9 +121,8 @@ class MockUriParser extends _i1.Mock implements _i9.UriParser {
   }
 
   @override
-  Uri https(String? baseUrl, String? path,
-          _i10.InvestmentSimulationRequest? request) =>
-      (super.noSuchMethod(Invocation.method(#https, [baseUrl, path, request]),
+  Uri https(String? baseUrl, _i10.InvestmentSimulationRequest? request) =>
+      (super.noSuchMethod(Invocation.method(#https, [baseUrl, request]),
           returnValue: _FakeUri_2()) as Uri);
   @override
   String toString() => super.toString();

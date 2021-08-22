@@ -29,8 +29,8 @@ class InvestmentCubit extends Cubit<InvestmentCubitState> {
     emit(InvestmentLoadingState());
 
     InvestmentSimulationRequest request = InvestmentSimulationRequest(
-      investedAmount: _lastSimulation.selectedAmount,
-      rate: _lastSimulation.selectedRate,
+      investedAmount: _lastSimulation.selectedAmount.toString(),
+      rate: _lastSimulation.selectedRate.toString(),
       maturityDate: _lastSimulation.selectedDate,
     );
 

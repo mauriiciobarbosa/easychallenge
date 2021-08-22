@@ -20,7 +20,9 @@ class InvestmentSimulationRepository {
               interceptors: [LoggingInterceptor()],
               requestTimeout: Duration(seconds: 30),
             ),
-        _baseUrl = baseUrl ?? 'https://610bd12966dd8f0017b76ac2.mockapi.io/',
+        _baseUrl = baseUrl ??
+            'https://610bd12966dd8f0017b76ac2.mockapi.io/'
+                'api/investments/simulate/v1',
         _uriParser = uriParser ?? UriParser();
 
   Client _client;
@@ -30,8 +32,7 @@ class InvestmentSimulationRepository {
   Future<InvestmentSimulationResult> doSimulation(
     InvestmentSimulationRequest request,
   ) async {
-    var url =
-        _uriParser.https(_baseUrl, 'api/investments/simulate/v1', request);
+    final url = _uriParser.https(_baseUrl, request);
 
     Response response = await _client.get(url);
 
@@ -41,6 +42,7 @@ class InvestmentSimulationRepository {
     }
 
     throw HttpException(
-        'Request failed with status code ${response.statusCode}');
+      'Request failed with status code ${response.statusCode}',
+    );
   }
 }

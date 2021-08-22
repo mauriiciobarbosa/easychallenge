@@ -7,8 +7,8 @@ InvestmentSimulationRequest mockInvestmentSimulationRequest({
   String maturityDate = '',
 }) {
   return InvestmentSimulationRequest(
-    investedAmount: investedAmount,
-    rate: rate,
+    investedAmount: investedAmount.toString(),
+    rate: rate.toString(),
     maturityDate: maturityDate,
   );
 }

@@ -26,7 +26,7 @@ void main() {
       uriParser: uriParser,
     );
 
-    when(uriParser.https(any, any, any)).thenAnswer((_) => Uri());
+    when(uriParser.https(any, any)).thenAnswer((_) => Uri());
   });
 
   test('when request is successful', () async {

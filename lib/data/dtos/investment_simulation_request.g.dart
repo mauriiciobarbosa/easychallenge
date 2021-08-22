@@ -9,11 +9,11 @@ part of 'investment_simulation_request.dart';
 InvestmentSimulationRequest _$InvestmentSimulationRequestFromJson(
     Map<String, dynamic> json) {
   return InvestmentSimulationRequest(
-    investedAmount: (json['investedAmount'] as num).toDouble(),
-    rate: (json['rate'] as num).toDouble(),
+    investedAmount: json['investedAmount'] as String,
+    rate: json['rate'] as String,
     maturityDate: json['maturityDate'] as String,
     index: json['index'] as String,
-    isTaxFree: json['isTaxFree'] as bool,
+    isTaxFree: json['isTaxFree'] as String,
   );
 }
 
