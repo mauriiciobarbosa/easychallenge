@@ -247,7 +247,6 @@ void main() {
     expect(button, findsOneWidget);
   });
 
-  // quando o repositório responder erro, deve mostrar tela de erro.
   testWidgets('when request fails and click on try again returns success',
       (tester) async {
     when(repository.doSimulation(any)).thenThrow(Exception('error'));
@@ -276,6 +275,7 @@ void main() {
 
     expect(find.byType(ResultSuccessScreen), findsOneWidget);
   });
+
   testWidgets('when simulate again button is clicked', (tester) async {
     when(repository.doSimulation(any)).thenAnswer((_) async => result);
 
@@ -298,14 +298,14 @@ void main() {
     await tester.pumpAndSettle();
   });
 
-  testWidgets('when try again button is clicked', (tester) async {
+  testWidgets('when back button is clicked', (tester) async {
     when(repository.doSimulation(any)).thenAnswer((_) async => result);
 
     await setupContainer(
       tester,
       ResultContainer(
         repository: repository,
-        onBack: expectAsync1((_) {}, count: 0),
+        onBack: expectAsync1((_) {}, count: 1),
       ),
     );
 
