@@ -80,7 +80,7 @@ class ResultSuccessScreen extends StatelessWidget {
               description: result.rateProfit,
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 16),
+              padding: const EdgeInsets.only(bottom: 16, top: 8),
               child: Button(
                 text: 'Simular novamente',
                 onPressed: onBack,

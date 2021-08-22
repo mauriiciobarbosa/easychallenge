@@ -20,21 +20,18 @@ class InputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: TextField(
-        textAlign: TextAlign.center,
-        controller: inputFieldController,
-        keyboardType: keyboardType,
-        inputFormatters: inputFormatter != null ? [inputFormatter!] : null,
-        onChanged: onChanged,
-        decoration: InputDecoration(
-          alignLabelWithHint: true,
-          labelText: label,
-          hintText: hint,
-          hintStyle: TextStyle(
-            fontSize: 24.0,
-          ),
+    return TextField(
+      textAlign: TextAlign.center,
+      controller: inputFieldController,
+      keyboardType: keyboardType,
+      inputFormatters: [if (inputFormatter != null) inputFormatter!],
+      onChanged: onChanged,
+      decoration: InputDecoration(
+        alignLabelWithHint: true,
+        labelText: label,
+        hintText: hint,
+        hintStyle: TextStyle(
+          fontSize: 24.0,
         ),
       ),
     );

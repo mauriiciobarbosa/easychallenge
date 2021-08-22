@@ -33,48 +33,60 @@ class FormScreen extends StatelessWidget {
               // how to make this input field's aligned proportionally to center.
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                InputField(
-                  keyboardType: TextInputType.number,
-                  label: 'Quanto você gostaria de aplicar? *',
-                  hint: 'R\$ 0,00',
-                  inputFormatter: CurrencyTextInputFormatter(
-                    locale: 'pt_Br',
-                    symbol: 'R\$',
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: InputField(
+                    keyboardType: TextInputType.number,
+                    label: 'Quanto você gostaria de aplicar? *',
+                    hint: 'R\$ 0,00',
+                    inputFormatter: CurrencyTextInputFormatter(
+                      locale: 'pt_Br',
+                      symbol: 'R\$',
+                    ),
+                    inputFieldController: amountInputFieldController,
+                    onChanged: (_) {
+                      _onValueChanged(context);
+                    },
                   ),
-                  inputFieldController: amountInputFieldController,
-                  onChanged: (_) {
-                    _onValueChanged(context);
-                  },
                 ),
-                InputField(
-                  keyboardType: TextInputType.number,
-                  label: 'Qual a data de vencimento do investimentos? *',
-                  hint: 'dia/mês/ano',
-                  // inputFormatter: MaskTextInputFormatter(mask: "##/##/####"),
-                  inputFormatter: null,
-                  inputFieldController: dateInputFieldController,
-                  onChanged: (_) {
-                    _onValueChanged(context);
-                  },
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: InputField(
+                    keyboardType: TextInputType.number,
+                    label: 'Qual a data de vencimento do investimentos? *',
+                    hint: 'dia/mês/ano',
+                    // inputFormatter: MaskTextInputFormatter(mask: "##/##/####"),
+                    inputFormatter: null,
+                    inputFieldController: dateInputFieldController,
+                    onChanged: (_) {
+                      _onValueChanged(context);
+                    },
+                  ),
                 ),
-                InputField(
-                  keyboardType: TextInputType.number,
-                  label: 'Qual o percentual do CDI do investimento? *',
-                  hint: '100%',
-                  // inputFormatter: MaskTextInputFormatter(mask: "###"),
-                  inputFormatter: null,
-                  inputFieldController: rateInputFieldController,
-                  onChanged: (_) {
-                    _onValueChanged(context);
-                  },
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: InputField(
+                    keyboardType: TextInputType.number,
+                    label: 'Qual o percentual do CDI do investimento? *',
+                    hint: '100%',
+                    // inputFormatter: MaskTextInputFormatter(mask: "###"),
+                    inputFormatter: null,
+                    inputFieldController: rateInputFieldController,
+                    onChanged: (_) {
+                      _onValueChanged(context);
+                    },
+                  ),
                 ),
-                Button(
-                  text: 'Simular',
-                  onPressed: _isSimulationEnabled(state)
-                      ? () {
-                          onPressed(context);
-                        }
-                      : null,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Button(
+                    text: 'Simular',
+                    onPressed: _isSimulationEnabled(state)
+                        ? () {
+                            onPressed(context);
+                          }
+                        : null,
+                  ),
                 ),
               ],
             ),
