@@ -94,16 +94,18 @@ class ResultSuccessScreen extends StatelessWidget {
               title: 'Rentabilidade no período',
               description: percentFormatter.format(result.rateProfit),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16, top: 8),
-              child: Button(
-                text: 'Simular novamente',
-                onPressed: onBack,
-              ),
-            )
           ],
         ),
       ),
+      persistentFooterButtons: [
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: Button(
+            text: 'Simular novamente',
+            onPressed: onBack,
+          ),
+        ),
+      ],
     );
   }
 }

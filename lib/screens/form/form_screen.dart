@@ -99,20 +99,22 @@ class FormScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Button(
-                    text: 'Simular',
-                    onPressed: _isSimulationEnabled(state)
-                        ? () {
-                            onPressed(context);
-                          }
-                        : null,
-                  ),
-                ),
               ],
             ),
           ),
+          persistentFooterButtons: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Button(
+                text: 'Simular',
+                onPressed: _isSimulationEnabled(state)
+                    ? () {
+                        onPressed(context);
+                      }
+                    : null,
+              ),
+            ),
+          ],
         );
       },
     );
