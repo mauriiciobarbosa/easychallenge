@@ -1,17 +1,16 @@
-import 'package:easynvest_app/screens/cubit/investment_cubit.dart';
+import 'package:easynvest_app/screens/form/cubit/investment_cubit.dart';
 import 'package:easynvest_app/screens/form/form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../matchers.dart';
-import '../cubit/investment_cubit_test.mocks.dart';
 
 void main() {
   late InvestmentCubit cubit;
 
   setUp(() {
-    cubit = InvestmentCubit(repository: MockInvestmentSimulationRepository());
+    cubit = InvestmentCubit();
   });
 
   MaterialApp setupContainer(Widget widget) {

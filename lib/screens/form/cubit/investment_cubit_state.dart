@@ -1,4 +1,3 @@
-import 'package:easynvest_app/domain/investment_simulation_result.dart';
 import 'package:easynvest_app/utils/extensions.dart';
 import 'package:equatable/equatable.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -67,29 +66,4 @@ class InvestmentInitialState extends InvestmentCubitState {
 
   @override
   List<Object?> get props => [date, amount, rate];
-}
-
-class InvestmentLoadingState extends InvestmentCubitState {
-  const InvestmentLoadingState();
-
-  @override
-  List<Object?> get props => [];
-}
-
-class InvestmentLoadedState extends InvestmentCubitState {
-  const InvestmentLoadedState(this.result);
-
-  final InvestmentSimulationResult result;
-
-  @override
-  List<Object?> get props => [result];
-}
-
-class InvestmentErrorState extends InvestmentCubitState {
-  const InvestmentErrorState(this.error);
-
-  final String error;
-
-  @override
-  List<Object?> get props => [error];
 }

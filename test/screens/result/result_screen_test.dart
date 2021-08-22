@@ -1,16 +1,15 @@
 import 'package:easynvest_app/domain/investment_simulation_result.dart';
-import 'package:easynvest_app/screens/cubit/investment_cubit.dart';
+import 'package:easynvest_app/screens/result/result_arguments.dart';
 import 'package:easynvest_app/screens/result/result_container.dart';
 import 'package:easynvest_app/screens/result/result_error_screen.dart';
 import 'package:easynvest_app/screens/result/result_success_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../matchers.dart';
-import '../cubit/investment_cubit_test.mocks.dart';
+import 'cubit/result_investment_cubit.mocks.dart';
 
 void main() {
   late MockInvestmentSimulationRepository repository;
@@ -40,35 +39,45 @@ void main() {
   final String annualGrossRateProfit = '87,26%';
   final String rateProfit = '9,55%';
 
-  late InvestmentCubit cubit;
-
   setUp(() {
     repository = MockInvestmentSimulationRepository();
-    cubit = InvestmentCubit(repository: repository);
-    cubit.onValueChanged('R\$ 5.999,99', '100', '31/12/2025');
 
     initializeDateFormatting('pt_BR');
   });
 
-  MaterialApp setupContainer(Widget widget) {
-    return MaterialApp(
-      home: BlocProvider<InvestmentCubit>(
-        create: (context) => cubit,
-        child: widget,
+  Future<void> setupContainer(WidgetTester tester, Widget widget) async {
+    final key = GlobalKey<NavigatorState>();
+    final args = ResultArguments('R\$ 5.999,99', '100', '31/12/2025');
+    await tester.pumpWidget(
+      MaterialApp(
+        navigatorKey: key,
+        home: TextButton(
+          onPressed: () => key.currentState!.push(
+            MaterialPageRoute<void>(
+              settings: RouteSettings(arguments: args),
+              builder: (_) => widget,
+            ),
+          ),
+          child: const SizedBox(),
+        ),
       ),
     );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byType(TextButton));
+    await tester.pumpAndSettle();
   }
 
-  // quando o repositório responder sucesso, deve mostrar a tela preenchida e com o botão de simular novamente.
   testWidgets('when request is successful', (tester) async {
     when(repository.doSimulation(any)).thenAnswer((_) async => result);
 
-    await tester.pumpWidget(setupContainer(
+    await setupContainer(
+      tester,
       ResultContainer(
+        repository: repository,
         onBack: expectAsync1((_) {}, count: 0),
       ),
-    ));
-    await tester.pumpAndSettle();
+    );
 
     expect(find.widgetWithText(AppBar, 'Resultado'), findsOneWidget);
 
@@ -209,16 +218,16 @@ void main() {
     expect(button, findsOneWidget);
   });
 
-  // quando o repositório responder erro, deve mostrar tela de erro.
   testWidgets('when request fails', (tester) async {
     when(repository.doSimulation(any)).thenThrow(Exception('error'));
 
-    await tester.pumpWidget(setupContainer(
+    await setupContainer(
+      tester,
       ResultContainer(
+        repository: repository,
         onBack: expectAsync1((_) {}, count: 0),
       ),
-    ));
-    await tester.pumpAndSettle();
+    );
 
     expect(find.widgetWithText(AppBar, 'Resultado'), findsOneWidget);
     expect(find.text('Oooops...'), findsOneWidget);
@@ -243,12 +252,13 @@ void main() {
       (tester) async {
     when(repository.doSimulation(any)).thenThrow(Exception('error'));
 
-    await tester.pumpWidget(setupContainer(
+    await setupContainer(
+      tester,
       ResultContainer(
+        repository: repository,
         onBack: expectAsync1((_) {}, count: 0),
       ),
-    ));
-    await tester.pumpAndSettle();
+    );
 
     expect(find.byType(ResultErrorScreen), findsOneWidget);
 
@@ -266,16 +276,16 @@ void main() {
 
     expect(find.byType(ResultSuccessScreen), findsOneWidget);
   });
-  // na tela de sucesso, quando clicar no botão simular novamente deve triggar o voltar.
   testWidgets('when simulate again button is clicked', (tester) async {
     when(repository.doSimulation(any)).thenAnswer((_) async => result);
 
-    await tester.pumpWidget(setupContainer(
+    await setupContainer(
+      tester,
       ResultContainer(
-        onBack: expectAsync1((_) {}, count: 1),
+        repository: repository,
+        onBack: expectAsync1((_) {}, count: 0),
       ),
-    ));
-    await tester.pumpAndSettle();
+    );
 
     final button = find.byWidgetPredicate(
       (widget) => findButtonWithText(
@@ -291,12 +301,13 @@ void main() {
   testWidgets('when try again button is clicked', (tester) async {
     when(repository.doSimulation(any)).thenAnswer((_) async => result);
 
-    await tester.pumpWidget(setupContainer(
+    await setupContainer(
+      tester,
       ResultContainer(
-        onBack: expectAsync1((_) {}, count: 1),
+        repository: repository,
+        onBack: expectAsync1((_) {}, count: 0),
       ),
-    ));
-    await tester.pumpAndSettle();
+    );
 
     await tester.tap(find.byIcon(Icons.arrow_back));
     await tester.pumpAndSettle();

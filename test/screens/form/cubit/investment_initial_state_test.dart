@@ -1,4 +1,4 @@
-import 'package:easynvest_app/screens/cubit/investment_cubit_state.dart';
+import 'package:easynvest_app/screens/form/cubit/investment_cubit_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
