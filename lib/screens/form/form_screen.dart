@@ -49,7 +49,7 @@ class FormScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text('Formulário'),
           ),
-          body: Padding(
+          body: SingleChildScrollView(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               // how to make this input field's aligned proportionally to center.
