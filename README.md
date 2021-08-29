@@ -1,16 +1,25 @@
-# easynvest_app
+# easychallenge
 
-A new Flutter application.
+An app to simulate the return of an investment.
 
-## Getting Started
+https://user-images.githubusercontent.com/4331095/131257097-886d4ece-3690-4cfb-aa6b-a7ab046ad149.mov
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Overview
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+The architecture used in this project was BLoc + repository pattern. I used two Cubits, one for the form screen, with the field's state, and another to the result screen, with the loading, success and error states. The navigation between the screens was made using the `pushNamed` method and a route defined in the `routes` attributes from the `MaterialApp`.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The repository pattern was used to encapsulate the knowledge of the data source and a special tratement of the data. Futhermore, I used a mix of the feature by package (ex.: `screens` package) and feature by type (ex.: `components` and `data` packages).
+
+Finally, I added local tests with the main purpose of validate the repository behaviour and some utility functions. The widget tests were introduced to validate the form and result screens.
+
+## Main dependencies
+`flutter_bloc` - Used on the app's architecure.
+
+`http` - Library to comunicate with a http api.
+
+`shimmer` - Used to add loading animation in the result screen.
+
+`intl` - Used to have access to number and data formaters.
+
+`currency_text_input_formatter` - Used to add money formatter to `quanto você gostaria de aplicar?` field.
