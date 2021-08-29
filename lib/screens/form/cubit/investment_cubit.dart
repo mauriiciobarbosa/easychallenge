@@ -1,4 +1,4 @@
-import 'package:easynvest_app/screens/form/cubit/investment_cubit_state.dart';
+import 'package:easychallenge/screens/form/cubit/investment_cubit_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class InvestmentCubit extends Cubit<InvestmentCubitState> {

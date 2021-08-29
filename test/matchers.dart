@@ -1,7 +1,7 @@
-import 'package:easynvest_app/components/button.dart';
-import 'package:easynvest_app/components/input_field.dart';
-import 'package:easynvest_app/components/result_header.dart';
-import 'package:easynvest_app/components/result_row.dart';
+import 'package:easychallenge/components/button.dart';
+import 'package:easychallenge/components/input_field.dart';
+import 'package:easychallenge/components/result_header.dart';
+import 'package:easychallenge/components/result_row.dart';
 import 'package:flutter/material.dart';
 
 bool findFieldWithHintAndLabel(Widget widget, String hint, String label) {

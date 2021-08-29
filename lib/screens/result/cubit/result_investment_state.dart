@@ -1,4 +1,4 @@
-import 'package:easynvest_app/domain/investment_simulation_result.dart';
+import 'package:easychallenge/domain/investment_simulation_result.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class ResultInvestmentCubitState extends Equatable {

@@ -1,5 +1,5 @@
-import 'package:easynvest_app/data/dtos/investment_simulation_request.dart';
-import 'package:easynvest_app/data/dtos/investment_simulation_response.dart';
+import 'package:easychallenge/data/dtos/investment_simulation_request.dart';
+import 'package:easychallenge/data/dtos/investment_simulation_response.dart';
 
 InvestmentSimulationRequest mockInvestmentSimulationRequest({
   double investedAmount = 0,

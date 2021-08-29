@@ -1,4 +1,4 @@
-import 'package:easynvest_app/utils/extensions.dart';
+import 'package:easychallenge/utils/extensions.dart';
 import 'package:equatable/equatable.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';

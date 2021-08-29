@@ -1,5 +1,5 @@
-import 'package:easynvest_app/components/result_shimmer_header.dart';
-import 'package:easynvest_app/components/result_shimmer_row.dart';
+import 'package:easychallenge/components/result_shimmer_header.dart';
+import 'package:easychallenge/components/result_shimmer_row.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 

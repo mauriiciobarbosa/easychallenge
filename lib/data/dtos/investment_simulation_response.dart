@@ -1,4 +1,4 @@
-import 'package:easynvest_app/domain/investment_simulation_result.dart';
+import 'package:easychallenge/domain/investment_simulation_result.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'investment_simulation_response.g.dart';

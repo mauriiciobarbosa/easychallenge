@@ -1,8 +1,8 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:easynvest_app/data/investment_simulation_repository.dart';
-import 'package:easynvest_app/domain/investment_simulation_result.dart';
-import 'package:easynvest_app/screens/result/cubit/result_investment_cubit.dart';
-import 'package:easynvest_app/screens/result/cubit/result_investment_state.dart';
+import 'package:easychallenge/data/investment_simulation_repository.dart';
+import 'package:easychallenge/domain/investment_simulation_result.dart';
+import 'package:easychallenge/screens/result/cubit/result_investment_cubit.dart';
+import 'package:easychallenge/screens/result/cubit/result_investment_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:mockito/annotations.dart';

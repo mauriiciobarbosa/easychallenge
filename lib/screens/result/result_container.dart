@@ -1,8 +1,8 @@
-import 'package:easynvest_app/data/investment_simulation_repository.dart';
-import 'package:easynvest_app/screens/result/result_arguments.dart';
-import 'package:easynvest_app/screens/result/result_error_screen.dart';
-import 'package:easynvest_app/screens/result/result_loading_screen.dart';
-import 'package:easynvest_app/screens/result/result_success_screen.dart';
+import 'package:easychallenge/data/investment_simulation_repository.dart';
+import 'package:easychallenge/screens/result/result_arguments.dart';
+import 'package:easychallenge/screens/result/result_error_screen.dart';
+import 'package:easychallenge/screens/result/result_loading_screen.dart';
+import 'package:easychallenge/screens/result/result_success_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

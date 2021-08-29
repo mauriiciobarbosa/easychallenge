@@ -1,10 +1,10 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
-import 'package:easynvest_app/components/button.dart';
-import 'package:easynvest_app/components/input_field.dart';
-import 'package:easynvest_app/screens/form/cubit/investment_cubit.dart';
-import 'package:easynvest_app/screens/form/cubit/investment_cubit_state.dart';
-import 'package:easynvest_app/screens/result/result_arguments.dart';
-import 'package:easynvest_app/screens/result/result_container.dart';
+import 'package:easychallenge/components/button.dart';
+import 'package:easychallenge/components/input_field.dart';
+import 'package:easychallenge/screens/form/cubit/investment_cubit.dart';
+import 'package:easychallenge/screens/form/cubit/investment_cubit_state.dart';
+import 'package:easychallenge/screens/result/result_arguments.dart';
+import 'package:easychallenge/screens/result/result_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

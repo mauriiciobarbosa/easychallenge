@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:easynvest_app/data/investment_simulation_repository.dart';
-import 'package:easynvest_app/data/uri_parser.dart';
-import 'package:easynvest_app/domain/investment_simulation_result.dart';
+import 'package:easychallenge/data/investment_simulation_repository.dart';
+import 'package:easychallenge/data/uri_parser.dart';
+import 'package:easychallenge/domain/investment_simulation_result.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:mockito/annotations.dart';

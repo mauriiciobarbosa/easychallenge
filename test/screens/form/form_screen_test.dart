@@ -1,5 +1,5 @@
-import 'package:easynvest_app/screens/form/cubit/investment_cubit.dart';
-import 'package:easynvest_app/screens/form/form_screen.dart';
+import 'package:easychallenge/screens/form/cubit/investment_cubit.dart';
+import 'package:easychallenge/screens/form/form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';

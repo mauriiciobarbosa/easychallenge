@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:easynvest_app/screens/form/cubit/investment_cubit.dart';
-import 'package:easynvest_app/screens/form/cubit/investment_cubit_state.dart';
+import 'package:easychallenge/screens/form/cubit/investment_cubit.dart';
+import 'package:easychallenge/screens/form/cubit/investment_cubit_state.dart';
 
 void main() {
   blocTest<InvestmentCubit, InvestmentCubitState>(

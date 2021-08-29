@@ -1,7 +1,7 @@
-import 'package:easynvest_app/data/dtos/investment_simulation_request.dart';
-import 'package:easynvest_app/data/investment_simulation_repository.dart';
-import 'package:easynvest_app/domain/investment_simulation_result.dart';
-import 'package:easynvest_app/screens/result/cubit/result_investment_state.dart';
+import 'package:easychallenge/data/dtos/investment_simulation_request.dart';
+import 'package:easychallenge/data/investment_simulation_repository.dart';
+import 'package:easychallenge/domain/investment_simulation_result.dart';
+import 'package:easychallenge/screens/result/cubit/result_investment_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ResultInvestmentCubit extends Cubit<ResultInvestmentCubitState> {

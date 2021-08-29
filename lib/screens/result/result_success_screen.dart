@@ -1,7 +1,7 @@
-import 'package:easynvest_app/components/button.dart';
-import 'package:easynvest_app/components/result_header.dart';
-import 'package:easynvest_app/components/result_row.dart';
-import 'package:easynvest_app/domain/investment_simulation_result.dart';
+import 'package:easychallenge/components/button.dart';
+import 'package:easychallenge/components/result_header.dart';
+import 'package:easychallenge/components/result_row.dart';
+import 'package:easychallenge/domain/investment_simulation_result.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';

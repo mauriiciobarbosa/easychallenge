@@ -1,4 +1,4 @@
-import 'package:easynvest_app/utils/extensions.dart';
+import 'package:easychallenge/utils/extensions.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

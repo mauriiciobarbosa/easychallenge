@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:easynvest_app/data/dtos/investment_simulation_request.dart';
-import 'package:easynvest_app/data/dtos/investment_simulation_response.dart';
-import 'package:easynvest_app/data/uri_parser.dart';
-import 'package:easynvest_app/domain/investment_simulation_result.dart';
+import 'package:easychallenge/data/dtos/investment_simulation_request.dart';
+import 'package:easychallenge/data/dtos/investment_simulation_response.dart';
+import 'package:easychallenge/data/uri_parser.dart';
+import 'package:easychallenge/domain/investment_simulation_result.dart';
 import 'package:http/http.dart';
 import 'package:http_interceptor/http/intercepted_client.dart';
 

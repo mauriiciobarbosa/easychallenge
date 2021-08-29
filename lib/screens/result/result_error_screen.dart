@@ -1,4 +1,4 @@
-import 'package:easynvest_app/components/button.dart';
+import 'package:easychallenge/components/button.dart';
 import 'package:flutter/material.dart';
 
 class ResultErrorScreen extends StatelessWidget {
