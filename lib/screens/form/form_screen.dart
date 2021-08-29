@@ -32,7 +32,7 @@ class FormContainer extends StatelessWidget {
 class FormScreen extends StatelessWidget {
   FormScreen({required this.onPressed});
 
-  final Function(BuildContext context) onPressed;
+  final void Function(BuildContext context) onPressed;
 
   final TextEditingController amountInputFieldController =
       TextEditingController();
@@ -45,6 +45,7 @@ class FormScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<InvestmentCubit, InvestmentCubitState>(
       builder: (context, state) {
+        _fillFieldsIfNeeded(state as InvestmentInitialState);
         return Scaffold(
           appBar: AppBar(
             title: Text('Formulário'),
@@ -133,5 +134,22 @@ class FormScreen extends StatelessWidget {
 
   bool _isSimulationEnabled(InvestmentCubitState state) {
     return state is InvestmentInitialState && state.isAllFieldsValid();
+  }
+
+  void _fillFieldsIfNeeded(InvestmentInitialState state) {
+    if (state.amount.isNotEmpty && state.amount != '0') {
+      amountInputFieldController.value =
+          amountInputFieldController.value.copyWith(text: state.amount);
+    }
+
+    if (state.rate.isNotEmpty && state.rate != '0') {
+      rateInputFieldController.value =
+          rateInputFieldController.value.copyWith(text: state.rate);
+    }
+
+    if (state.date.isNotEmpty && state.date != '0') {
+      dateInputFieldController.value =
+          dateInputFieldController.value.copyWith(text: state.date);
+    }
   }
 }

@@ -197,16 +197,16 @@ void main() {
       findsOneWidget,
     );
 
-    expect(
-      find.byWidgetPredicate(
-        (widget) => findRowWithTitleAndDescription(
-          widget,
-          'Rentabilidade no período',
-          rateProfit,
-        ),
+    final finder = find.byWidgetPredicate(
+      (widget) => findRowWithTitleAndDescription(
+        widget,
+        'Rentabilidade no período',
+        rateProfit,
       ),
-      findsOneWidget,
     );
+    await tester.scrollUntilVisible(finder, 1);
+
+    expect(finder, findsOneWidget);
 
     final button = find.byWidgetPredicate(
       (widget) => findButtonWithText(
@@ -283,7 +283,7 @@ void main() {
       tester,
       ResultContainer(
         repository: repository,
-        onBack: expectAsync1((_) {}, count: 0),
+        onBack: expectAsync0(() {}, count: 1),
       ),
     );
 
@@ -304,8 +304,8 @@ void main() {
     await setupContainer(
       tester,
       ResultContainer(
+        onBack: expectAsync0(() {}, count: 1),
         repository: repository,
-        onBack: expectAsync1((_) {}, count: 1),
       ),
     );
 
