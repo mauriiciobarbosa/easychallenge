@@ -10,6 +10,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final repository = new InvestmentSimulationRepository();
     return MaterialApp(
       title: 'Easychallenge',
       theme: ThemeData(
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       home: FormContainer(),
       routes: {
         ResultContainer.routeName: (context) => ResultContainer(
-              repository: new InvestmentSimulationRepository(),
+              repository: repository,
               onBack: () => Navigator.pop(context),
             )
       },
