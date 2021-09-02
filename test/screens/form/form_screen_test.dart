@@ -75,7 +75,6 @@ void main() {
         'Quanto você gostaria de aplicar? *',
       ),
     );
-    // como adicionar mais valor
     await tester.enterText(moneyField, '1000');
 
     final dateField = find.byWidgetPredicate(
@@ -95,7 +94,6 @@ void main() {
       ),
     );
     await tester.enterText(rateField, '100');
-    // por qual motivo tive que utilizar?
     await tester.pumpAndSettle();
 
     final button = find.byWidgetPredicate(
@@ -158,8 +156,7 @@ void main() {
         'Quanto você gostaria de aplicar? *',
       ),
     );
-    // como adicionar mais valor
-    await tester.enterText(moneyField, '1');
+    await tester.enterText(moneyField, '100');
 
     final dateField = find.byWidgetPredicate(
       (widget) => findFieldWithHintAndLabel(
@@ -178,7 +175,6 @@ void main() {
       ),
     );
     await tester.enterText(rateField, '100');
-    // por qual motivo tive que utilizar?
     await tester.pumpAndSettle();
 
     final button = find.byWidgetPredicate(
