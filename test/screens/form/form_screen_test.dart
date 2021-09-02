@@ -76,7 +76,7 @@ void main() {
       ),
     );
     // como adicionar mais valor
-    await tester.enterText(moneyField, '1');
+    await tester.enterText(moneyField, '1000');
 
     final dateField = find.byWidgetPredicate(
       (widget) => findFieldWithHintAndLabel(

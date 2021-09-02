@@ -8,6 +8,7 @@ import 'package:easychallenge/screens/result/result_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class FormContainer extends StatelessWidget {
   @override
@@ -15,9 +16,7 @@ class FormContainer extends StatelessWidget {
     return BlocProvider<InvestmentCubit>(
       create: (BuildContext context) => InvestmentCubit(),
       child: FormScreen(
-        onPressed: (context) {
-          final state = BlocProvider.of<InvestmentCubit>(context).state
-              as InvestmentInitialState;
+        onPressed: (state) {
           Navigator.pushNamed(
             context,
             ResultContainer.routeName,
@@ -32,7 +31,7 @@ class FormContainer extends StatelessWidget {
 class FormScreen extends StatelessWidget {
   FormScreen({required this.onPressed});
 
-  final void Function(BuildContext context) onPressed;
+  final void Function(InvestmentInitialState state) onPressed;
 
   final TextEditingController amountInputFieldController =
       TextEditingController();
@@ -41,11 +40,19 @@ class FormScreen extends StatelessWidget {
   final TextEditingController rateInputFieldController =
       TextEditingController();
 
+  final _currencyFormatter = CurrencyTextInputFormatter(
+    locale: 'pt_Br',
+    symbol: 'R\$',
+  );
+  final _dateFormatter = MaskTextInputFormatter(mask: "##/##/####");
+  final _rateFormatter = MaskTextInputFormatter(mask: "###");
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<InvestmentCubit, InvestmentCubitState>(
       builder: (context, state) {
-        _fillFieldsIfNeeded(state as InvestmentInitialState);
+        final initialState = state as InvestmentInitialState;
+        _fillFieldsIfNeeded(initialState);
         return Scaffold(
           appBar: AppBar(
             title: Text('Formulário'),
@@ -62,10 +69,7 @@ class FormScreen extends StatelessWidget {
                     keyboardType: TextInputType.number,
                     label: 'Quanto você gostaria de aplicar? *',
                     hint: 'R\$ 0,00',
-                    inputFormatter: CurrencyTextInputFormatter(
-                      locale: 'pt_Br',
-                      symbol: 'R\$',
-                    ),
+                    inputFormatter: _currencyFormatter,
                     inputFieldController: amountInputFieldController,
                     onChanged: (_) {
                       _onValueChanged(context);
@@ -75,11 +79,10 @@ class FormScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: InputField(
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.datetime,
                     label: 'Qual a data de vencimento do investimentos? *',
                     hint: 'dia/mês/ano',
-                    // inputFormatter: MaskTextInputFormatter(mask: "##/##/####"),
-                    inputFormatter: null,
+                    inputFormatter: _dateFormatter,
                     inputFieldController: dateInputFieldController,
                     onChanged: (_) {
                       _onValueChanged(context);
@@ -92,8 +95,7 @@ class FormScreen extends StatelessWidget {
                     keyboardType: TextInputType.number,
                     label: 'Qual o percentual do CDI do investimento? *',
                     hint: '100%',
-                    // inputFormatter: MaskTextInputFormatter(mask: "###"),
-                    inputFormatter: null,
+                    inputFormatter: _rateFormatter,
                     inputFieldController: rateInputFieldController,
                     onChanged: (_) {
                       _onValueChanged(context);
@@ -108,9 +110,9 @@ class FormScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Button(
                 text: 'Simular',
-                onPressed: _isSimulationEnabled(state)
+                onPressed: _isSimulationEnabled(initialState)
                     ? () {
-                        onPressed(context);
+                        onPressed(initialState);
                       }
                     : null,
               ),
@@ -122,7 +124,6 @@ class FormScreen extends StatelessWidget {
   }
 
   _onValueChanged(BuildContext context) {
-    // print('calling');
     final cubit = context.read<InvestmentCubit>();
 
     cubit.onValueChanged(
@@ -132,8 +133,8 @@ class FormScreen extends StatelessWidget {
     );
   }
 
-  bool _isSimulationEnabled(InvestmentCubitState state) {
-    return state is InvestmentInitialState && state.isAllFieldsValid();
+  bool _isSimulationEnabled(InvestmentInitialState state) {
+    return state.isAllFieldsValid();
   }
 
   void _fillFieldsIfNeeded(InvestmentInitialState state) {
